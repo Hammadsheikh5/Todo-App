@@ -30,13 +30,13 @@ export default function TodoApp() { // Default exported functional component.
   }
 
   // Conditional rendering of tasks.
-  let renderTask = mainTask.length === 0 ? (
-    <p>No Task Available</p> // If there are no tasks, display this message.
+  const renderTask = mainTask.length === 0 ? (
+    <p className="text-black">No Task Available</p> // If there are no tasks, display this message.
   ) : (
     // If tasks exist, iterate through each task and render it.
     mainTask.map((task, i) => (
       <div key={i} className="flex flex-col sm:flex-row gap-3 justify-between items-start p-4 text-black bg-slate-200 "> {/* Flexbox for layout of task */}
-        <div className="flex justify-evenly items-start gap-3 sm:w-[90%] "> {/* Flex layout for title and description */}
+        <div className="flex justify-between sm:justify-evenly items-start gap-3  sm:w-[90%] w-[95%]"> {/* Flex layout for title and description */}
           <p className=" sm:w-[30%] break-words text-xs sm:text-sm md:text-base lg:text-lg  font-medium">{task.title}</p> {/* Display task title with wrapping */}
           <p className="sm:w-[60%] break-words text-xs sm:text-sm md:text-base lg:text-lg font-medium" >{task.desc}</p> {/* Display task description with wrapping */}
         </div>
@@ -63,7 +63,7 @@ export default function TodoApp() { // Default exported functional component.
             type="text"
             placeholder="Enter Title Here"
             value={title} // Binds input value to the title state.
-            className="w-[95%] lg:full  bg-gray-300 px-2 py-2 border border-gray-600 rounded-lg text-xs sm:text-sm md:text-base m-2 lg:m-0"
+            className="w-[95%] lg:full  bg-gray-300 px-2 py-2 border border-gray-600 rounded-lg text-xs sm:text-sm md:text-base m-2 lg:m-0 text-black"
             onChange={(e) => { // Updates the title state as user types.
               settitle(e.target.value);
             }}
@@ -78,7 +78,7 @@ export default function TodoApp() { // Default exported functional component.
             onChange={(e) => { // Updates the description state as user types.
               setdesc(e.target.value);
             }}
-            className="w-[95%] lg:full  bg-gray-300 px-2 py-2 border border-gray-600 rounded-lg text-xs sm:text-sm md:text-base m-2 lg:m-0"
+            className="w-[95%] lg:full  bg-gray-300 px-2 py-2 border border-gray-600 rounded-lg text-xs sm:text-sm md:text-base m-2 lg:m-0 text-black"
           />
           
           {/* Button to submit the form */}
@@ -88,7 +88,7 @@ export default function TodoApp() { // Default exported functional component.
         <hr /> {/* Horizontal line separator between form and task list */}
 
         {/* Task rendering section */}
-        <div className="bg-slate-300 p-4">
+        <div className="bg-slate-300 p-4 max-w-[1500px] mx-auto">
           
           {renderTask} {/* Rendering the tasks based on the condition set above */}
         </div>
